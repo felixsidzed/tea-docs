@@ -11,4 +11,6 @@ Tea documentation
    :caption: Contents:
 
    quickstart
+   hello_world
    syntax_reference
+   .. standard_library_reference

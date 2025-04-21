@@ -24,7 +24,6 @@ class TeaLexer(RegexLexer):
 	}
 
 lexers["tea"] = TeaLexer()
-highlight_language = "tea"
 
 # For the full list of built-in configuration values, see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
@@ -50,7 +49,7 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-extensions = ["sphinx_rtd_dark_mode"]
+extensions = ["sphinx_rtd_dark_mode", "sphinx_design"]
 html_theme = "sphinx-rtd-dark-mode"
 html_static_path = ["_static"]
 default_dark_mode = True
