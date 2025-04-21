@@ -49,7 +49,6 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-extensions = ["sphinx_rtd_dark_mode", "sphinx_design"]
-html_theme = "sphinx-rtd-dark-mode"
+extensions = ["sphinx_book_theme", "sphinx_design"]
+html_theme = "sphinx_book_theme"
 html_static_path = ["_static"]
-default_dark_mode = True
