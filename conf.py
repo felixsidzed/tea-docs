@@ -3,6 +3,9 @@
 from pygments.token import *
 from pygments.lexer import RegexLexer
 from sphinx.highlighting import lexers
+from docutils import nodes
+from sphinx.roles import XRefRole
+
 
 class TeaLexer(RegexLexer):
 	name = "Tea"
@@ -22,6 +25,7 @@ class TeaLexer(RegexLexer):
 			(r"\S+", Text),
 		],
 	}
+
 
 lexers["tea"] = TeaLexer()
 
@@ -43,7 +47,6 @@ extensions = []
 
 templates_path = ["_templates"]
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
-
 
 
 # -- Options for HTML output -------------------------------------------------

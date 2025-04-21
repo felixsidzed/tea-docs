@@ -155,6 +155,7 @@
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Hello, World!</a></li>
 <li class="toctree-l1"><a class="reference internal" href="syntax_reference.html">Syntax Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_reference.html">Standard Library Reference</a></li>
 </ul>
 
     </div>
@@ -321,16 +322,16 @@ document.write(`
 <p>Your first program in Tea - A “Hello, World!” program</p>
 <section id="source-code">
 <h2>Source Code<a class="headerlink" href="#source-code" title="Link to this heading">#</a></h2>
-<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="c">// Import the I/O module from the standard library</span>
-<span class="k">using</span><span class="w"> </span><span class="s">&quot;io&quot;</span>;
-
-<span class="c">// Define the entry point for our program</span>
-<span class="k">public</span><span class="w"> </span><span class="k">func</span><span class="w"> </span><span class="n">main</span>()<span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">int</span>
-<span class="w">        </span><span class="c">// Print &quot;Hello, World!&quot; to console</span>
-<span class="w">        </span><span class="n">io</span>::print(&quot;Hello,<span class="w"> </span><span class="n">World</span><span class="o">!</span>\n&quot;);
-
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="m">0</span>;
-<span class="k">end</span>
+<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c">// Import the I/O module from the standard library</span>
+<span class="linenos"> 2</span><span class="k">using</span><span class="w"> </span><span class="s">&quot;io&quot;</span>;
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="c">// Define the entry point for our program</span>
+<span class="linenos"> 5</span><span class="k">public</span><span class="w"> </span><span class="k">func</span><span class="w"> </span><span class="n">main</span>()<span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">int</span>
+<span class="linenos"> 6</span><span class="w">        </span><span class="c">// Print &quot;Hello, World!&quot; to console</span>
+<span class="linenos"> 7</span><span class="w">        </span><span class="n">io</span>::print(&quot;Hello,<span class="w"> </span><span class="n">World</span><span class="o">!</span>\n&quot;);
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="m">0</span>;
+<span class="linenos">10</span><span class="k">end</span>
 </pre></div>
 </div>
 </section>

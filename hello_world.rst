@@ -6,7 +6,8 @@ Your first program in Tea - A "Hello, World!" program
 Source Code
 -----------
 
-.. code:: tea
+.. code-block:: tea
+	:linenos:
 
 	// Import the I/O module from the standard library
 	using "io";

@@ -1,7 +1,7 @@
 Syntax Reference
 =============================
 
-This section provides detailed documentation on the syntax and structure of the Tea language.
+Detailed documentation on the syntax and structure of the Tea language.
 
 Basic Concepts
 --------------
