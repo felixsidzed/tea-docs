@@ -13,4 +13,4 @@ Tea documentation
    quickstart
    hello_world
    syntax_reference
-   .. standard_library_reference
+   standard_library_reference
