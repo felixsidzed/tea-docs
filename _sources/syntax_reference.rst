@@ -1,5 +1,5 @@
 Syntax Reference
-=============================
+================
 
 Detailed documentation on the syntax and structure of the Tea language.
 
