@@ -1,10 +1,8 @@
 # Configuration file for the Sphinx documentation builder.
 #
 from pygments.token import *
-from pygments.lexer import RegexLexer
+from pygments.lexer import RegexLexer, bygroups
 from sphinx.highlighting import lexers
-from docutils import nodes
-from sphinx.roles import XRefRole
 
 
 class TeaLexer(RegexLexer):
@@ -14,15 +12,20 @@ class TeaLexer(RegexLexer):
 
 	tokens = {
 		"root": [
-			(r"(using|private|public|func|var|return|while|for|do|end|if|else|elseif|const|int|float|double|char|string|void|bool)", Keyword),
-			(r"\/\*.*?\*\/|\/\/.*$", Comment),
-			(r"([+-/*=<>!&]|\|\|)", Operator),
-			(r"(-?[0-9]+|[0-9]+\.[0-9]*f?)", Number),
+			(r"\b(using|private|public|func|var|return|while|for|do|end|if|else|elseif|const|int|float|double|char|string|void|long|bool)\b", Keyword),
+			(r"\/\/.*?$", Comment.Single),
+			(r"\/\*.*?\*\/", Comment.Multiline),
+			(r'"(?:\\.|[^"\\])*"', String.Double),
+			(r"'\\?.'", String.Char),
+			(r"([+\-*/=<>!&]|\|\|)", Operator),
+			(r"-?[0-9]+\.[0-9]*f?", Number.Float),
+			(r"-?[0-9]+", Number.Integer),
+			(r"\b([A-Za-z_][A-Za-z0-9_]*)\s*(\()", bygroups(Name.Function, Punctuation)),
 			(r"\b[A-Za-z_][A-Za-z0-9_]*\b", Name),
-			(r"'\\?.'", String),
-			(r"\".*?(?<!\\)(\\\\)*?\"", String),
+			(r"::", Operator),
+			(r"[\(\)\{\}\[\]\,\;\.]", Punctuation),
 			(r"\s+", Whitespace),
-			(r"\S+", Text),
+			(r".", Text),
 		],
 	}
 

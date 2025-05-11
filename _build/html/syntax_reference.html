@@ -334,8 +334,8 @@ document.write(`
 </ul>
 <p>Functions
 Function definitons in Tea follow a format similar to Lua but with static typing.</p>
-<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">func</span><span class="w"> </span><span class="n">main</span>()<span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">int</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="m">0</span>;
+<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">func</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">int</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="k">end</span>
 </pre></div>
 </div>
@@ -352,8 +352,8 @@ Function definitons in Tea follow a format similar to Lua but with static typing
 <li><p>Body: The body of the function contains statements that define its behavior.</p></li>
 </ul>
 <p>Function Definition Example</p>
-<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">func</span><span class="w"> </span><span class="n">add</span>(int<span class="w"> </span><span class="n">a</span><span class="o">,</span><span class="w"> </span><span class="k">int</span><span class="w"> </span><span class="n">b</span>)<span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">int</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span>;
+<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">func</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="k">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">int</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
 <span class="k">end</span>
 </pre></div>
 </div>
@@ -365,8 +365,8 @@ Function definitons in Tea follow a format similar to Lua but with static typing
 <ol class="arabic">
 <li><dl>
 <dt>Standard Function Definition:</dt><dd><p>Declares a function with the system-default calling convention.</p>
-<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">func</span><span class="w"> </span><span class="n">main</span>()<span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">void</span>
-<span class="w">        </span><span class="c">// code here</span>
+<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">func</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">void</span>
+<span class="w">        </span><span class="c1">// code here</span>
 <span class="k">end</span>
 </pre></div>
 </div>
@@ -375,8 +375,8 @@ Function definitons in Tea follow a format similar to Lua but with static typing
 </li>
 <li><dl>
 <dt>Function with Calling Convention:</dt><dd><p>Specifies a calling convention, like __stdcall.</p>
-<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="n">__stdcall</span><span class="w"> </span><span class="k">func</span><span class="w"> </span><span class="n">calculate</span>(int<span class="w"> </span><span class="n">x</span>)<span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">float</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">3</span><span class="o">.</span><span class="m">14</span>;
+<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="n">__stdcall</span><span class="w"> </span><span class="k">func</span><span class="w"> </span><span class="nf">calculate</span><span class="p">(</span><span class="k">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">float</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">3.14</span><span class="p">;</span>
 <span class="k">end</span>
 </pre></div>
 </div>
@@ -385,7 +385,7 @@ Function definitons in Tea follow a format similar to Lua but with static typing
 </li>
 <li><dl>
 <dt>Function Declaration (extern):</dt><dd><p>Functions can be declared without a body (similar to forward declarations in C/C++).</p>
-<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">func</span><span class="w"> </span><span class="n">compute</span>(int<span class="w"> </span><span class="n">a</span>)<span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">int</span>;
+<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">func</span><span class="w"> </span><span class="nf">compute</span><span class="p">(</span><span class="k">int</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">int</span><span class="p">;</span>
 </pre></div>
 </div>
 </dd>
@@ -397,8 +397,8 @@ Function definitons in Tea follow a format similar to Lua but with static typing
 <h2>Arguments<a class="headerlink" href="#arguments" title="Link to this heading">#</a></h2>
 <p>Arguments are declared in parentheses and separated by commas. Each argument is given a type.</p>
 <p>Example:</p>
-<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">func</span><span class="w"> </span><span class="n">greet</span>(string<span class="w"> </span><span class="n">name</span>)<span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">string</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">str</span>::cat(3,<span class="w"> </span><span class="s">&quot;Hello, &quot;</span><span class="o">,</span><span class="w"> </span><span class="n">name</span><span class="o">,</span><span class="w"> </span><span class="s">&quot;!&quot;</span>);
+<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">func</span><span class="w"> </span><span class="nf">greet</span><span class="p">(</span><span class="k">string</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">string</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">str</span><span class="o">::</span><span class="nf">cat</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Hello, &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;!&quot;</span><span class="p">);</span>
 <span class="k">end</span>
 </pre></div>
 </div>
@@ -409,7 +409,7 @@ Function definitons in Tea follow a format similar to Lua but with static typing
 <p>Primitive Types: - int, float, double, char, string, bool, void</p>
 <p>Pointer Types:
 Use * to define a pointer type:</p>
-<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">ptr</span>:<span class="w"> </span><span class="k">int</span><span class="o">*</span>;
+<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">ptr</span>:<span class="w"> </span><span class="k">int</span><span class="o">*</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
@@ -420,7 +420,7 @@ Use * to define a pointer type:</p>
 <div><ul>
 <li><dl>
 <dt>Return Statement</dt><dd><p>A function can return a value with the return keyword.</p>
-<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">return</span><span class="w"> </span><span class="m">42</span>;
+<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">return</span><span class="w"> </span><span class="mi">42</span><span class="p">;</span>
 </pre></div>
 </div>
 </dd>
@@ -428,8 +428,8 @@ Use * to define a pointer type:</p>
 </li>
 <li><dl>
 <dt>Variable Declaration</dt><dd><p>Variables can be declared with a specified type and optionally initialized with a value.</p>
-<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">x</span>:<span class="w"> </span><span class="k">int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span>;
-<span class="k">var</span><span class="w"> </span><span class="n">y</span>:<span class="w"> </span><span class="k">float</span>;
+<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">x</span>:<span class="w"> </span><span class="k">int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="k">var</span><span class="w"> </span><span class="n">y</span>:<span class="w"> </span><span class="k">float</span><span class="p">;</span>
 </pre></div>
 </div>
 </dd>
@@ -437,10 +437,10 @@ Use * to define a pointer type:</p>
 </li>
 <li><dl>
 <dt>Control Flow</dt><dd><p>Tea includes control flow statements such as if, elseif, and else for conditional execution:</p>
-<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span>(x<span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0</span>)<span class="w"> </span><span class="k">do</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;positive&quot;</span>;
+<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">do</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;positive&quot;</span><span class="p">;</span>
 <span class="k">else</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;negative&quot;</span>;
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;negative&quot;</span><span class="p">;</span>
 <span class="k">end</span>
 </pre></div>
 </div>
@@ -449,13 +449,13 @@ Use * to define a pointer type:</p>
 </li>
 <li><dl>
 <dt>Loops</dt><dd><p>Tea supports while and for loops.</p>
-<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">while</span><span class="w"> </span>(x<span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0</span>)<span class="w"> </span><span class="k">do</span>
-<span class="w">        </span><span class="n">x</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="m">1</span>;
+<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">do</span>
+<span class="w">        </span><span class="n">x</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="k">end</span>
 </pre></div>
 </div>
-<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span>(var<span class="w"> </span><span class="n">i</span>:<span class="w"> </span><span class="k">int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>;<span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">10</span>;<span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="m">1</span>)<span class="w"> </span><span class="k">do</span>
-<span class="w">        </span><span class="n">io</span>::printf(&quot;%d\n&quot;,<span class="w"> </span><span class="n">i</span>);
+<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">var</span><span class="w"> </span><span class="n">i</span>:<span class="w"> </span><span class="k">int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">do</span>
+<span class="w">        </span><span class="n">io</span><span class="o">::</span><span class="nf">printf</span><span class="p">(</span><span class="s2">&quot;%d\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
 <span class="k">end</span>
 </pre></div>
 </div>
@@ -469,7 +469,7 @@ Use * to define a pointer type:</p>
 <p>Logical: &amp;&amp; (and), || (or)</p>
 <p>Unary Operators: ! (not)</p>
 <p>Example of an expression:</p>
-<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">result</span>:<span class="w"> </span><span class="k">int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>(x<span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span>)<span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">z</span>;
+<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">result</span>:<span class="w"> </span><span class="k">int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">z</span><span class="p">;</span>
 </pre></div>
 </div>
 </dd>
@@ -477,7 +477,7 @@ Use * to define a pointer type:</p>
 </li>
 <li><dl>
 <dt>Module Imports</dt><dd><p>Tea supports the use of modules, which can import code from other files. Modules are included using the using keyword.</p>
-<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="s">&quot;math&quot;</span>;
+<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="s2">&quot;math&quot;</span><span class="p">;</span>
 </pre></div>
 </div>
 </dd>

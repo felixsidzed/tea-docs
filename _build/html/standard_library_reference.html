@@ -339,6 +339,21 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sys.sleep"><code class="docutils literal notranslate"><span class="pre">sleep()</span></code></a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thread">Thread</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thread.create"><code class="docutils literal notranslate"><span class="pre">create()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thread.join"><code class="docutils literal notranslate"><span class="pre">join()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#net">Net</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#net.connect"><code class="docutils literal notranslate"><span class="pre">connect()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#net.listen"><code class="docutils literal notranslate"><span class="pre">listen()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#net.accept"><code class="docutils literal notranslate"><span class="pre">accept()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#net.send"><code class="docutils literal notranslate"><span class="pre">send()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#net.recv"><code class="docutils literal notranslate"><span class="pre">recv()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#net.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#net.settimeout"><code class="docutils literal notranslate"><span class="pre">settimeout()</span></code></a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -409,7 +424,7 @@ document.write(`
 </dl>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>It is recommended to free the result string using <cite>mem::free</cite></p>
+<p>It is important to free the result using <cite>mem::free</cite></p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Why?</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
@@ -452,7 +467,7 @@ Over time, especially in long-running programs or repeated allocations (e.g., in
 </dl>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>It is recommended to free the result string using <cite>mem::free</cite></p>
+<p>It is important to free the result using <cite>mem::free</cite></p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Why?</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
@@ -471,48 +486,48 @@ Over time, especially in long-running programs or repeated allocations (e.g., in
 <dl class="py function">
 <dt class="sig sig-object py" id="math.abs">
 <span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">abs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">int</span> <span class="pre">n</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#math.abs" title="Link to this definition">#</a></dt>
-<dd><p>Returns the absolute value of the given integer.</p>
+<dd></dd></dl>
+
+<p>Returns the absolute value of the given integer.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>n</strong> – The integer whose absolute value is to be computed.</p>
+<dt class="field-odd">param n<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The integer whose absolute value is to be computed.</p>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dt class="field-even">returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The absolute value of the input integer.</p>
 </dd>
 </dl>
-</dd></dl>
-
 <dl class="py function">
 <dt class="sig sig-object py" id="math.sqrt">
 <span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">sqrt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">int</span> <span class="pre">n</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#math.sqrt" title="Link to this definition">#</a></dt>
-<dd><p>Returns the square root of the given integer.</p>
+<dd></dd></dl>
+
+<p>Returns the square root of the given integer.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>value</strong> – The integer to compute the square root of.</p>
+<dt class="field-odd">param value<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The integer to compute the square root of.</p>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dt class="field-even">returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The square root of the input integer.</p>
 </dd>
 </dl>
-</dd></dl>
-
 <dl class="py function">
 <dt class="sig sig-object py" id="math.sum">
 <span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">sum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">int</span> <span class="pre">count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">int...</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#math.sum" title="Link to this definition">#</a></dt>
-<dd><p>Computes the sum of the given integers.</p>
+<dd></dd></dl>
+
+<p>Computes the sum of the given integers.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>count</strong> – The number of variadic arguments passed.</p></li>
-<li><p><strong>values</strong> – The integers to be summed.</p></li>
-</ul>
+<dt class="field-odd">param count<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The number of variadic arguments passed.</p>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The sum of the integers.</p>
+<dt class="field-even">param values<span class="colon">:</span></dt>
+<dd class="field-even"><p>The integers to be summed.</p>
+</dd>
+<dt class="field-odd">returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The sum of the integers.</p>
 </dd>
 </dl>
-</dd></dl>
-
 </section>
 <section id="string">
 <h2>String<a class="headerlink" href="#string" title="Link to this heading">#</a></h2>
@@ -597,7 +612,7 @@ Over time, especially in long-running programs or repeated allocations (e.g., in
 </dl>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>It is recommended to free the result string using <cite>mem::free</cite></p>
+<p>It is important to free the result using <cite>mem::free</cite></p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Why?</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
@@ -660,6 +675,150 @@ Over time, especially in long-running programs or repeated allocations (e.g., in
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>ms</strong> – The amount of milliseconds to sleep for.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="thread">
+<h2>Thread<a class="headerlink" href="#thread" title="Link to this heading">#</a></h2>
+<p>The <cite>Thread</cite> module provides access to basic multithreading operations such as creating a thread and waiting for it to complete</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="thread.create">
+<span class="sig-prename descclassname"><span class="pre">thread.</span></span><span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span> <span class="pre">f</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">void*</span></span></span><a class="headerlink" href="#thread.create" title="Link to this definition">#</a></dt>
+<dd><p>Creates a new thread to execute the specified function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>f</strong> – A function to run on the created thread. The function must take 0 arguments and return <code class="docutils literal notranslate"><span class="pre">void</span></code></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A pointer to the newly created thread.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="thread.join">
+<span class="sig-prename descclassname"><span class="pre">thread.</span></span><span class="sig-name descname"><span class="pre">join</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">void*</span> <span class="pre">thread</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">void</span></span></span><a class="headerlink" href="#thread.join" title="Link to this definition">#</a></dt>
+<dd><p>Blocks the calling thread until the specified thread completes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>thread</strong> – The thread to wait for.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="net">
+<h2>Net<a class="headerlink" href="#net" title="Link to this heading">#</a></h2>
+<p>The <cite>Net</cite> module provides access to basic socket operations such as creating a socket and sending data.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="net.connect">
+<span class="sig-prename descclassname"><span class="pre">net.</span></span><span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span> <span class="pre">host</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">int</span> <span class="pre">port</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">void*</span></span></span><a class="headerlink" href="#net.connect" title="Link to this definition">#</a></dt>
+<dd><p>Creates a <strong>client</strong> TCP socket and connects it to the specified IP address.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>host</strong> – The IP address to connect to.</p></li>
+<li><p><strong>port</strong> – The port to connect to.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The created socket.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="net.listen">
+<span class="sig-prename descclassname"><span class="pre">net.</span></span><span class="sig-name descname"><span class="pre">listen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">int</span> <span class="pre">port</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">void*</span></span></span><a class="headerlink" href="#net.listen" title="Link to this definition">#</a></dt>
+<dd><p>Creates a <strong>server</strong> TCP socket and listens for incoming connections on the specified port.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>port</strong> – The port to listen on.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The created server socket.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="net.accept">
+<span class="sig-prename descclassname"><span class="pre">net.</span></span><span class="sig-name descname"><span class="pre">accept</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">void*</span> <span class="pre">socket</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">void*</span></span></span><a class="headerlink" href="#net.accept" title="Link to this definition">#</a></dt>
+<dd><p>Accepts an incoming connection from a client.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>socket</strong> – The server socket instance to accept connections from.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A socket representing the connected client.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="net.send">
+<span class="sig-prename descclassname"><span class="pre">net.</span></span><span class="sig-name descname"><span class="pre">send</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">void*</span> <span class="pre">socket</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">string</span> <span class="pre">data</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">void</span></span></span><a class="headerlink" href="#net.send" title="Link to this definition">#</a></dt>
+<dd><p>Sends data over the specified socket.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>socket</strong> – The socket through which data will be sent.</p></li>
+<li><p><strong>data</strong> – The data to send.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="net.recv">
+<span class="sig-prename descclassname"><span class="pre">net.</span></span><span class="sig-name descname"><span class="pre">recv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">void*</span> <span class="pre">socket</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">int</span> <span class="pre">size</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#net.recv" title="Link to this definition">#</a></dt>
+<dd><p>Receives data from the specified socket.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>socket</strong> – The socket from which to receive data.</p></li>
+<li><p><strong>size</strong> – The maximum amount of data to receive (in bytes).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The received data.</p>
+</dd>
+</dl>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>It is important to free the result using <cite>mem::free</cite>.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Why?</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Internally, <cite>net::recv</cite> uses <cite>HeapAlloc</cite> to allocate memory for the received data.</p>
+<p class="sd-card-text">This means that the allocated memory is managed separately from the stack. If you do not free the memory using <cite>mem::free</cite>, it may lead to memory leaks—where allocated memory is not returned to the system. Over time, especially in long-running programs or during repeated allocations (e.g., in loops or with user input), this can exhaust system memory, degrade performance, and even cause the application to crash.</p>
+</div>
+</details></div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="net.close">
+<span class="sig-prename descclassname"><span class="pre">net.</span></span><span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">void*</span> <span class="pre">socket</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">void</span></span></span><a class="headerlink" href="#net.close" title="Link to this definition">#</a></dt>
+<dd><p>Closes the specified socket.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>socket</strong> – The socket to close.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="net.settimeout">
+<span class="sig-prename descclassname"><span class="pre">net.</span></span><span class="sig-name descname"><span class="pre">settimeout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">void*</span> <span class="pre">socket</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">int</span> <span class="pre">timeout</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">void</span></span></span><a class="headerlink" href="#net.settimeout" title="Link to this definition">#</a></dt>
+<dd><p>Sets the timeout duration for the specified socket.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>socket</strong> – The socket instance.</p></li>
+<li><p><strong>timeout</strong> – The timeout duration in seconds.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -743,6 +902,21 @@ Over time, especially in long-running programs or repeated allocations (e.g., in
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sys.exit"><code class="docutils literal notranslate"><span class="pre">exit()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sys.time"><code class="docutils literal notranslate"><span class="pre">time()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sys.sleep"><code class="docutils literal notranslate"><span class="pre">sleep()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thread">Thread</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thread.create"><code class="docutils literal notranslate"><span class="pre">create()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thread.join"><code class="docutils literal notranslate"><span class="pre">join()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#net">Net</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#net.connect"><code class="docutils literal notranslate"><span class="pre">connect()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#net.listen"><code class="docutils literal notranslate"><span class="pre">listen()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#net.accept"><code class="docutils literal notranslate"><span class="pre">accept()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#net.send"><code class="docutils literal notranslate"><span class="pre">send()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#net.recv"><code class="docutils literal notranslate"><span class="pre">recv()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#net.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#net.settimeout"><code class="docutils literal notranslate"><span class="pre">settimeout()</span></code></a></li>
 </ul>
 </li>
 </ul>
