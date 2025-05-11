@@ -174,3 +174,28 @@ The `Memory` module provides access to basic memory operations such as free.
 
 	:param block: The memory block to free.
 	:returns: Whether the HeapFree succeeded.
+
+System
+------
+
+The `System` module provides access to basic system operations such as exit, time and sleep.
+
+.. currentmodule:: sys
+
+.. function:: exit(int code) -> noreturn
+
+	Exits from the current process with an exit code.
+
+	:param code: The exit code.
+
+.. function:: time() -> long
+
+	Returns the current system time as a UNIX timestamp.
+
+	:returns: The system time.
+
+.. function:: sleep(int ms) -> void
+
+	Halts the current thread's execution for `ms` milliseconds
+
+	:param ms: The amount of milliseconds to sleep for.

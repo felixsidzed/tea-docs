@@ -1,6 +1,3 @@
-.. Tea documentation master file, created by
-   sphinx-quickstart on Mon Apr 21 13:46:33 2025.
-
 Tea documentation
 =================
 
@@ -14,3 +11,4 @@ Tea documentation
    hello_world
    syntax_reference
    standard_library_reference
+   ffi
