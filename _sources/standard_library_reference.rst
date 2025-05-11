@@ -38,7 +38,7 @@ The `IO` module provides basic input and output functionalities, including print
 
 	.. tip::
 
-		It is recommended to free the result string using `mem::free`
+		It is important to free the result using `mem::free`
 
 		.. dropdown:: Why?
 
@@ -65,7 +65,7 @@ The `IO` module provides basic input and output functionalities, including print
 
 	.. tip::
 
-		It is recommended to free the result string using `mem::free`
+		It is important to free the result using `mem::free`
 
 		.. dropdown:: Why?
 
@@ -84,25 +84,25 @@ The `Math` module provides basic mathematical operations such as absolute value,
 
 .. function:: abs(int n) -> int
 
-   Returns the absolute value of the given integer.
+Returns the absolute value of the given integer.
 
-   :param n: The integer whose absolute value is to be computed.
-   :returns: The absolute value of the input integer.
+:param n: The integer whose absolute value is to be computed.
+:returns: The absolute value of the input integer.
 
 .. function:: sqrt(int n) -> int
 
-   Returns the square root of the given integer.
+Returns the square root of the given integer.
 
-   :param value: The integer to compute the square root of.
-   :returns: The square root of the input integer.
+:param value: The integer to compute the square root of.
+:returns: The square root of the input integer.
 
 .. function:: sum(int count, int...) -> int
 
-   Computes the sum of the given integers.
+Computes the sum of the given integers.
 
-   :param count: The number of variadic arguments passed.
-   :param values: The integers to be summed.
-   :returns: The sum of the integers.
+:param count: The number of variadic arguments passed.
+:param values: The integers to be summed.
+:returns: The sum of the integers.
 
 String
 ------
@@ -126,20 +126,20 @@ The `String` module provides basic string operations such as length calculation,
 
 .. function:: sub(string str, int start, int end) -> string
 
-    Extracts a substring from the given string.
+	Extracts a substring from the given string.
 
-    :param str: The string to extract the substring from.
-    :param start: The starting index (inclusive) from where to begin extraction.
-    :param end: The ending index (exclusive) up to which the substring will be extracted.
-    :returns: The extracted substring between the start and end indices.
+	:param str: The string to extract the substring from.
+	:param start: The starting index (inclusive) from where to begin extraction.
+	:param end: The ending index (exclusive) up to which the substring will be extracted.
+	:returns: The extracted substring between the start and end indices.
 
 .. function:: eq(string lhs, string rhs) -> bool
 
-    Compares two strings for equality.
+	Compares two strings for equality.
 
-    :param lhs: The first string to compare.
-    :param rhs: The second string to compare.
-    :returns: ``true`` if the strings are equal, otherwise ``false``.
+	:param lhs: The first string to compare.
+	:param rhs: The second string to compare.
+	:returns: ``true`` if the strings are equal, otherwise ``false``.
 
 .. function:: cat(int count, ...) -> string
 
@@ -151,7 +151,7 @@ The `String` module provides basic string operations such as length calculation,
 
 	.. tip::
 
-		It is recommended to free the result string using `mem::free`
+		It is important to free the result using `mem::free`
 
 		.. dropdown:: Why?
 
@@ -199,3 +199,90 @@ The `System` module provides access to basic system operations such as exit, tim
 	Halts the current thread's execution for `ms` milliseconds
 
 	:param ms: The amount of milliseconds to sleep for.
+
+Thread
+------
+
+The `Thread` module provides access to basic multithreading operations such as creating a thread and waiting for it to complete
+
+.. currentmodule:: thread
+
+.. function:: create(func f) -> void*
+
+	Creates a new thread to execute the specified function.
+
+	:param f: A function to run on the created thread. The function must take 0 arguments and return ``void``
+	:returns: A pointer to the newly created thread.
+
+.. function:: join(void* thread) -> void
+
+	Blocks the calling thread until the specified thread completes.
+
+	:param thread: The thread to wait for.
+
+Net
+---
+
+The `Net` module provides access to basic socket operations such as creating a socket and sending data.
+
+.. currentmodule:: net
+
+.. function:: connect(string host, int port) -> void*
+
+   Creates a **client** TCP socket and connects it to the specified IP address.
+
+   :param host: The IP address to connect to.
+   :param port: The port to connect to.
+   :returns: The created socket.
+
+.. function:: listen(int port) -> void*
+
+   Creates a **server** TCP socket and listens for incoming connections on the specified port.
+
+   :param port: The port to listen on.
+   :returns: The created server socket.
+
+.. function:: accept(void* socket) -> void*
+
+   Accepts an incoming connection from a client.
+
+   :param socket: The server socket instance to accept connections from.
+   :returns: A socket representing the connected client.
+
+.. function:: send(void* socket, string data) -> void
+
+   Sends data over the specified socket.
+
+   :param socket: The socket through which data will be sent.
+   :param data: The data to send.
+
+.. function:: recv(void* socket, int size) -> str
+
+   Receives data from the specified socket.
+
+   :param socket: The socket from which to receive data.
+   :param size: The maximum amount of data to receive (in bytes).
+   :returns: The received data.
+
+   .. tip::
+
+      It is important to free the result using `mem::free`.
+
+      .. dropdown:: Why?
+
+         Internally, `net::recv` uses `HeapAlloc` to allocate memory for the received data.
+         
+         This means that the allocated memory is managed separately from the stack. If you do not free the memory using `mem::free`, it may lead to memory leaks—where allocated memory is not returned to the system. Over time, especially in long-running programs or during repeated allocations (e.g., in loops or with user input), this can exhaust system memory, degrade performance, and even cause the application to crash.
+
+.. function:: close(void* socket) -> void
+
+   Closes the specified socket.
+
+   :param socket: The socket to close.
+
+.. function:: settimeout(void* socket, int timeout) -> void
+
+   Sets the timeout duration for the specified socket.
+
+   :param socket: The socket instance.
+   :param timeout: The timeout duration in seconds.

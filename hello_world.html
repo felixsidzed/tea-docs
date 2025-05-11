@@ -324,15 +324,15 @@ document.write(`
 <p>Your first program in Tea - A “Hello, World!” program</p>
 <section id="source-code">
 <h2>Source Code<a class="headerlink" href="#source-code" title="Link to this heading">#</a></h2>
-<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c">// Import the I/O module from the standard library</span>
-<span class="linenos"> 2</span><span class="k">using</span><span class="w"> </span><span class="s">&quot;io&quot;</span>;
+<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">// Import the I/O module from the standard library</span>
+<span class="linenos"> 2</span><span class="k">using</span><span class="w"> </span><span class="s2">&quot;io&quot;</span><span class="p">;</span>
 <span class="linenos"> 3</span>
-<span class="linenos"> 4</span><span class="c">// Define the entry point for our program</span>
-<span class="linenos"> 5</span><span class="k">public</span><span class="w"> </span><span class="k">func</span><span class="w"> </span><span class="n">main</span>()<span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">int</span>
-<span class="linenos"> 6</span><span class="w">        </span><span class="c">// Print &quot;Hello, World!&quot; to console</span>
-<span class="linenos"> 7</span><span class="w">        </span><span class="n">io</span>::print(&quot;Hello,<span class="w"> </span><span class="n">World</span><span class="o">!</span>\n&quot;);
+<span class="linenos"> 4</span><span class="c1">// Define the entry point for our program</span>
+<span class="linenos"> 5</span><span class="k">public</span><span class="w"> </span><span class="k">func</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">int</span>
+<span class="linenos"> 6</span><span class="w">        </span><span class="c1">// Print &quot;Hello, World!&quot; to console</span>
+<span class="linenos"> 7</span><span class="w">        </span><span class="n">io</span><span class="o">::</span><span class="nf">print</span><span class="p">(</span><span class="s2">&quot;Hello, World!\n&quot;</span><span class="p">);</span>
 <span class="linenos"> 8</span>
-<span class="linenos"> 9</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="m">0</span>;
+<span class="linenos"> 9</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="linenos">10</span><span class="k">end</span>
 </pre></div>
 </div>
@@ -349,10 +349,10 @@ document.write(`
 <p class="admonition-title">Note</p>
 <p class="sd-card-text">Make sure you have C++ Build Tools installed (for <em>link.exe</em> and <em>kernel32.lib</em>)</p>
 </div>
-<div class="highlight-batch notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="c1">: Link the generated .o file with Tea\&#39;s standard library and kernel32</span>
-link /entry:main /subsystem:console /out:hello-world.exe hello-world.o teastd.lib kernel32.lib
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Link the generated .o file with Tea\&#39;s standard library and kernel32</span>
+link<span class="w"> </span>/entry:main<span class="w"> </span>/subsystem:console<span class="w"> </span>/out:hello-world.exe<span class="w"> </span>hello-world.o<span class="w"> </span>teastd.lib<span class="w"> </span>kernel32.lib
 
-<span class="p">:</span><span class="c1">: Run the generated .exe</span>
+<span class="c1"># Run the generated .exe</span>
 hello-world.exe
 </pre></div>
 </div>

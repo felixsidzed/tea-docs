@@ -31,12 +31,12 @@ Compiling
 
 	.. note:: Make sure you have C++ Build Tools installed (for *link.exe* and *kernel32.lib*)
 
-	.. code-block:: batch
+	.. code-block:: bash
 
-		:: Link the generated .o file with Tea\'s standard library and kernel32
+		# Link the generated .o file with Tea\'s standard library and kernel32
 		link /entry:main /subsystem:console /out:hello-world.exe hello-world.o teastd.lib kernel32.lib
 
-		:: Run the generated .exe
+		# Run the generated .exe
 		hello-world.exe
 
 .. dropdown:: Linux
