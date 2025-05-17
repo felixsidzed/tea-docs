@@ -164,7 +164,7 @@ The `String` module provides basic string operations such as length calculation,
 Memory
 ------
 
-The `Memory` module provides access to basic memory operations such as free.
+The `Memory` module provides access to basic memory operations such as heap allocation and free.
 
 .. currentmodule:: mem
 
@@ -174,6 +174,13 @@ The `Memory` module provides access to basic memory operations such as free.
 
 	:param block: The memory block to free.
 	:returns: Whether the HeapFree succeeded.
+
+.. function:: alloc(int size) -> void*
+
+	Allocates *size* bytes in the memory heap and returns a pointer to them. Similar to `malloc` in C.
+
+	:param size: The amount of bytes to allocate.
+	:returns: The pointer to the allocated space.
 
 System
 ------
@@ -286,3 +293,37 @@ The `Net` module provides access to basic socket operations such as creating a s
 
    :param socket: The socket instance.
    :param timeout: The timeout duration in seconds.
+
+Core
+----
+
+The `Core` module provides access to basic core operations such as exceptions.
+
+.. currentmodule:: core
+
+.. function:: throw(string message) -> noreturn
+
+	Throws an error with the specified message. This function never returns, as it interrupts normal execution and signals an exception.
+
+	:param message: The error message.
+	:throws: An exception with the given message.
+
+.. function:: pcall(void* f) -> string
+
+	Calls the specified function in protected mode.
+	If the function completes successfully, `null` is returned.
+	If an exception is thrown, the error message is returned instead.
+
+	:param f: The function to call.
+	:returns: The error message or `null`.
+
+.. function:: xpcall(void* f, void* handler) -> bool
+
+	Calls the specified function in protected mode.
+	If an exception is thrown during the execution of *f*, the optional *handler* is invoked with the error message.
+	The return value indicates whether the exception was successfully handled.
+	If *handler* is not provided (i.e., is `null`), `xpcall` will return ``true`` if the function succeeded, ``false`` otherwise.
+
+	:param f: The function to call. (``func f() -> void``)
+	:param handler: (optional) The error handler. (``func handler(string error) -> bool``)
+	:returns: Whether the exception was handled.

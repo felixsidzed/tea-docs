@@ -24,8 +24,9 @@ Example Directory Structure
     ├── test.tea          # Tea source file
     ├── build/
     │   └── test.o        # Compiled object file
-    ├── lib/
+    ├── stdlib/
     │   └── teastd.lib    # Tea standard library
+	|	└── *.tea		  # Declarations for teastd
 
 Compiling a Tea Program
 -----------------------

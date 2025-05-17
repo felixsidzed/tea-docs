@@ -33,7 +33,7 @@ Compiling
 
 	.. code-block:: bash
 
-		# Link the generated .o file with Tea\'s standard library and kernel32
+		# Link the generated .o file with Tea's standard library and kernel32
 		link /entry:main /subsystem:console /out:hello-world.exe hello-world.o teastd.lib kernel32.lib
 
 		# Run the generated .exe
