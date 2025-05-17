@@ -331,6 +331,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memory">Memory</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mem.free"><code class="docutils literal notranslate"><span class="pre">free()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mem.alloc"><code class="docutils literal notranslate"><span class="pre">alloc()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system">System</a><ul class="nav section-nav flex-column">
@@ -352,6 +353,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#net.recv"><code class="docutils literal notranslate"><span class="pre">recv()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#net.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#net.settimeout"><code class="docutils literal notranslate"><span class="pre">settimeout()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#core">Core</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#core.throw"><code class="docutils literal notranslate"><span class="pre">throw()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#core.pcall"><code class="docutils literal notranslate"><span class="pre">pcall()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#core.xpcall"><code class="docutils literal notranslate"><span class="pre">xpcall()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -627,7 +634,7 @@ Over time, especially in long-running programs or repeated allocations (e.g., in
 </section>
 <section id="memory">
 <h2>Memory<a class="headerlink" href="#memory" title="Link to this heading">#</a></h2>
-<p>The <cite>Memory</cite> module provides access to basic memory operations such as free.</p>
+<p>The <cite>Memory</cite> module provides access to basic memory operations such as heap allocation and free.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="mem.free">
 <span class="sig-prename descclassname"><span class="pre">mem.</span></span><span class="sig-name descname"><span class="pre">free</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">void*</span> <span class="pre">block</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#mem.free" title="Link to this definition">#</a></dt>
@@ -638,6 +645,20 @@ Over time, especially in long-running programs or repeated allocations (e.g., in
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Whether the HeapFree succeeded.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mem.alloc">
+<span class="sig-prename descclassname"><span class="pre">mem.</span></span><span class="sig-name descname"><span class="pre">alloc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">int</span> <span class="pre">size</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">void*</span></span></span><a class="headerlink" href="#mem.alloc" title="Link to this definition">#</a></dt>
+<dd><p>Allocates <em>size</em> bytes in the memory heap and returns a pointer to them. Similar to <cite>malloc</cite> in C.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>size</strong> – The amount of bytes to allocate.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The pointer to the allocated space.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -824,6 +845,60 @@ Over time, especially in long-running programs or repeated allocations (e.g., in
 </dd></dl>
 
 </section>
+<section id="core">
+<h2>Core<a class="headerlink" href="#core" title="Link to this heading">#</a></h2>
+<p>The <cite>Core</cite> module provides access to basic core operations such as exceptions.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="core.throw">
+<span class="sig-prename descclassname"><span class="pre">core.</span></span><span class="sig-name descname"><span class="pre">throw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span> <span class="pre">message</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">noreturn</span></span></span><a class="headerlink" href="#core.throw" title="Link to this definition">#</a></dt>
+<dd><p>Throws an error with the specified message. This function never returns, as it interrupts normal execution and signals an exception.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>message</strong> – The error message.</p>
+</dd>
+<dt class="field-even">Throws<span class="colon">:</span></dt>
+<dd class="field-even"><p>An exception with the given message.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="core.pcall">
+<span class="sig-prename descclassname"><span class="pre">core.</span></span><span class="sig-name descname"><span class="pre">pcall</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">void*</span> <span class="pre">f</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">string</span></span></span><a class="headerlink" href="#core.pcall" title="Link to this definition">#</a></dt>
+<dd><p>Calls the specified function in protected mode.
+If the function completes successfully, <cite>null</cite> is returned.
+If an exception is thrown, the error message is returned instead.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>f</strong> – The function to call.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The error message or <cite>null</cite>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="core.xpcall">
+<span class="sig-prename descclassname"><span class="pre">core.</span></span><span class="sig-name descname"><span class="pre">xpcall</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">void*</span> <span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">void*</span> <span class="pre">handler</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#core.xpcall" title="Link to this definition">#</a></dt>
+<dd><p>Calls the specified function in protected mode.
+If an exception is thrown during the execution of <em>f</em>, the optional <em>handler</em> is invoked with the error message.
+The return value indicates whether the exception was successfully handled.
+If <em>handler</em> is not provided (i.e., is <cite>null</cite>), <cite>xpcall</cite> will return <code class="docutils literal notranslate"><span class="pre">true</span></code> if the function succeeded, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>f</strong> – The function to call. (<code class="docutils literal notranslate"><span class="pre">func</span> <span class="pre">f()</span> <span class="pre">-&gt;</span> <span class="pre">void</span></code>)</p></li>
+<li><p><strong>handler</strong> – (optional) The error handler. (<code class="docutils literal notranslate"><span class="pre">func</span> <span class="pre">handler(string</span> <span class="pre">error)</span> <span class="pre">-&gt;</span> <span class="pre">bool</span></code>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Whether the exception was handled.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
 </section>
 
 
@@ -896,6 +971,7 @@ Over time, especially in long-running programs or repeated allocations (e.g., in
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memory">Memory</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mem.free"><code class="docutils literal notranslate"><span class="pre">free()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mem.alloc"><code class="docutils literal notranslate"><span class="pre">alloc()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system">System</a><ul class="nav section-nav flex-column">
@@ -917,6 +993,12 @@ Over time, especially in long-running programs or repeated allocations (e.g., in
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#net.recv"><code class="docutils literal notranslate"><span class="pre">recv()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#net.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#net.settimeout"><code class="docutils literal notranslate"><span class="pre">settimeout()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#core">Core</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#core.throw"><code class="docutils literal notranslate"><span class="pre">throw()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#core.pcall"><code class="docutils literal notranslate"><span class="pre">pcall()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#core.xpcall"><code class="docutils literal notranslate"><span class="pre">xpcall()</span></code></a></li>
 </ul>
 </li>
 </ul>

@@ -364,7 +364,7 @@ Function definitons in Tea follow a format similar to Lua but with static typing
 <p>Tea supports various forms of function definitions:</p>
 <ol class="arabic">
 <li><dl>
-<dt>Standard Function Definition:</dt><dd><p>Declares a function with the system-default calling convention.</p>
+<dt>Standard Function Definition:</dt><dd><p>Defines a function with the system-default calling convention.</p>
 <div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">func</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">void</span>
 <span class="w">        </span><span class="c1">// code here</span>
 <span class="k">end</span>
@@ -375,8 +375,8 @@ Function definitons in Tea follow a format similar to Lua but with static typing
 </li>
 <li><dl>
 <dt>Function with Calling Convention:</dt><dd><p>Specifies a calling convention, like __stdcall.</p>
-<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="n">__stdcall</span><span class="w"> </span><span class="k">func</span><span class="w"> </span><span class="nf">calculate</span><span class="p">(</span><span class="k">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">float</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">3.14</span><span class="p">;</span>
+<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">__stdcall</span><span class="w"> </span><span class="k">func</span><span class="w"> </span><span class="nf">calculate</span><span class="p">(</span><span class="k">float</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">float</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">3.14f</span><span class="p">;</span>
 <span class="k">end</span>
 </pre></div>
 </div>
@@ -384,8 +384,8 @@ Function definitons in Tea follow a format similar to Lua but with static typing
 </dl>
 </li>
 <li><dl>
-<dt>Function Declaration (extern):</dt><dd><p>Functions can be declared without a body (similar to forward declarations in C/C++).</p>
-<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">func</span><span class="w"> </span><span class="nf">compute</span><span class="p">(</span><span class="k">int</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">int</span><span class="p">;</span>
+<dt>Function Import:</dt><dd><p>Functions can be declared with an ‘import’ keyword to import them from another module.</p>
+<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="k">__cdecl</span><span class="w"> </span><span class="k">func</span><span class="w"> </span><span class="nf">compute</span><span class="p">(</span><span class="k">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">int</span><span class="p">;</span>
 </pre></div>
 </div>
 </dd>
@@ -404,12 +404,21 @@ Function definitons in Tea follow a format similar to Lua but with static typing
 </div>
 </section>
 <section id="types">
-<h2>Types<a class="headerlink" href="#types" title="Link to this heading">#</a></h2>
+<span id="tea-types"></span><h2>Types<a class="headerlink" href="#types" title="Link to this heading">#</a></h2>
 <p>Tea supports the following types:</p>
-<p>Primitive Types: - int, float, double, char, string, bool, void</p>
+<p>Primitive Types: - int, float, double, char, string, bool, void, long</p>
 <p>Pointer Types:
-Use * to define a pointer type:</p>
+Use <code class="docutils literal notranslate"><span class="pre">*</span></code> to define a pointer type:</p>
 <div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">ptr</span>:<span class="w"> </span><span class="k">int</span><span class="o">*</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Array Types:
+Use <code class="docutils literal notranslate"><span class="pre">[size]</span></code> to define an array type:</p>
+<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">values</span>:<span class="w"> </span><span class="k">int</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">];</span>
+</pre></div>
+</div>
+<p>Or use type deduction:</p>
+<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">];</span>
 </pre></div>
 </div>
 </section>
@@ -427,9 +436,11 @@ Use * to define a pointer type:</p>
 </dl>
 </li>
 <li><dl>
-<dt>Variable Declaration</dt><dd><p>Variables can be declared with a specified type and optionally initialized with a value.</p>
-<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">x</span>:<span class="w"> </span><span class="k">int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
-<span class="k">var</span><span class="w"> </span><span class="n">y</span>:<span class="w"> </span><span class="k">float</span><span class="p">;</span>
+<dt>Variable Declaration</dt><dd><p>Variables can be declared with a specified type and optionally initialized with a value.
+Alternatively, type deduction allows the type to be inferred from the assigned value.</p>
+<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">x</span>:<span class="w"> </span><span class="k">int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w">      </span><span class="c1">// Explicit type declaration</span>
+<span class="k">var</span><span class="w"> </span><span class="n">y</span>:<span class="w"> </span><span class="k">float</span><span class="p">;</span><span class="w">        </span><span class="c1">// Declared but not initialized</span>
+<span class="k">var</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w">          </span><span class="c1">// Type deduced as &#39;int&#39;</span>
 </pre></div>
 </div>
 </dd>
@@ -454,30 +465,57 @@ Use * to define a pointer type:</p>
 <span class="k">end</span>
 </pre></div>
 </div>
-<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">var</span><span class="w"> </span><span class="n">i</span>:<span class="w"> </span><span class="k">int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">do</span>
+<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">var</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">do</span>
 <span class="w">        </span><span class="n">io</span><span class="o">::</span><span class="nf">printf</span><span class="p">(</span><span class="s2">&quot;%d\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
 <span class="k">end</span>
 </pre></div>
 </div>
+<p>You can break out of a loop or skip the current cycle using <code class="docutils literal notranslate"><span class="pre">break</span></code> or <code class="docutils literal notranslate"><span class="pre">continue</span></code></p>
 </dd>
 </dl>
 </li>
 <li><dl>
 <dt>Expressions</dt><dd><p>Expressions in Tea are evaluated based on operator precedence. Operators are used to manipulate values.</p>
-<p>Arithmetic: +, -, *, /</p>
-<p>Comparison: ==, !=, &lt;, &lt;=, &gt;, &gt;=</p>
-<p>Logical: &amp;&amp; (and), || (or)</p>
-<p>Unary Operators: ! (not)</p>
+<p>Arithmetic: <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code></p>
+<p>Comparison: <code class="docutils literal notranslate"><span class="pre">==</span></code>, <code class="docutils literal notranslate"><span class="pre">!=</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code></p>
+<p>Logical: <code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code> (and), <code class="docutils literal notranslate"><span class="pre">||</span></code> (or)</p>
+<p>Unary Operators: <code class="docutils literal notranslate"><span class="pre">!</span></code> (not)</p>
 <p>Example of an expression:</p>
-<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">result</span>:<span class="w"> </span><span class="k">int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">z</span><span class="p">;</span>
+<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">z</span><span class="p">;</span>
 </pre></div>
 </div>
 </dd>
 </dl>
 </li>
 <li><dl>
-<dt>Module Imports</dt><dd><p>Tea supports the use of modules, which can import code from other files. Modules are included using the using keyword.</p>
+<dt>Module Imports</dt><dd><p>Tea supports the use of modules, which can import code from other files. Modules are included using the ‘using’ keyword.</p>
 <div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="s2">&quot;math&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Casting</dt><dd><p>Casting in Tea is similiar to C:</p>
+<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">f</span>:<span class="w"> </span><span class="k">double</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">42.42</span><span class="p">;</span>
+<span class="k">var</span><span class="w"> </span><span class="n">pf</span>:<span class="w"> </span><span class="k">double</span><span class="o">*</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">f</span><span class="p">;</span>
+<span class="k">var</span><span class="w"> </span><span class="n">pi</span>:<span class="w"> </span><span class="k">int</span><span class="o">*</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">int</span><span class="o">*</span><span class="p">)</span><span class="n">pf</span><span class="p">;</span>
+
+<span class="n">io</span><span class="o">::</span><span class="nf">printf</span><span class="p">(</span><span class="s2">&quot;double: %f\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">);</span>
+<span class="n">io</span><span class="o">::</span><span class="nf">printf</span><span class="p">(</span><span class="s2">&quot;int: %d\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">pi</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Macros</dt><dd><p>Macros in Tea are simple compile-time constants, declared using the <cite>macro</cite> keyword.
+They are replaced by their value during compilation, making them useful for defining constants, configuration flags, or other values that do not change at runtime.</p>
+<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">macro</span><span class="w"> </span><span class="n">abc</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Once defined, macros can be used like regular identifiers:</p>
+<div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="n">io</span><span class="o">::</span><span class="nf">printf</span><span class="p">(</span><span class="s2">&quot;abc = %d\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">abc</span><span class="p">);</span><span class="w">  </span><span class="c1">// Outputs: abc = 5</span>
 </pre></div>
 </div>
 </dd>

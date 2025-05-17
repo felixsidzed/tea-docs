@@ -12,7 +12,7 @@ class TeaLexer(RegexLexer):
 
 	tokens = {
 		"root": [
-			(r"\b(using|private|public|func|var|return|while|for|do|end|if|else|elseif|const|int|float|double|char|string|void|long|bool)\b", Keyword),
+			(r"\b(using|private|public|func|var|return|while|for|do|end|if|else|elseif|const|int|float|double|char|string|void|long|bool|import|macro|__cdecl|__fastcall|__stdcall)\b", Keyword),
 			(r"\/\/.*?$", Comment.Single),
 			(r"\/\*.*?\*\/", Comment.Multiline),
 			(r'"(?:\\.|[^"\\])*"', String.Double),

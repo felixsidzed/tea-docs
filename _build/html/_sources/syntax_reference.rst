@@ -49,7 +49,7 @@ Function Variants
 Tea supports various forms of function definitions:
 
 1. Standard Function Definition:
-	Declares a function with the system-default calling convention.
+	Defines a function with the system-default calling convention.
 
 	.. code-block:: tea
 
@@ -62,16 +62,16 @@ Tea supports various forms of function definitions:
 
 	.. code-block:: tea
 
-		public __stdcall func calculate(int x) -> float
-			return x * 3.14;
+		public __stdcall func calculate(float x) -> float
+			return x * 3.14f;
 		end
 
-3. Function Declaration (extern):
-	Functions can be declared without a body (similar to forward declarations in C/C++).
+3. Function Import:
+	Functions can be declared with an 'import' keyword to import them from another module.
 
 	.. code-block:: tea
 
-		public func compute(int a) -> int;
+		import __cdecl func compute(int n) -> int;
 
 Arguments
 ---------
@@ -85,19 +85,33 @@ Example:
 		return str::cat(3, "Hello, ", name, "!");
 	end
 
+.. _tea-types:
+
 Types
 -----
 Tea supports the following types:
 
-Primitive Types: - int, float, double, char, string, bool, void
+Primitive Types: - int, float, double, char, string, bool, void, long
 
 Pointer Types:
-Use * to define a pointer type:
+Use ``*`` to define a pointer type:
 
 .. code-block:: tea
 
 	var ptr: int*;
 
+Array Types:
+Use ``[size]`` to define an array type:
+
+.. code-block:: tea
+
+	var values: int[5] = [1, 2, 3, 4, 5];
+
+Or use type deduction:
+
+.. code-block:: tea
+
+	var values = [1, 2, 3, 4, 5];
 
 Statements
 ----------
@@ -112,11 +126,13 @@ Tea supports several types of statements that define the behavior of a program:
 
 	* Variable Declaration
 		Variables can be declared with a specified type and optionally initialized with a value.
+		Alternatively, type deduction allows the type to be inferred from the assigned value.
 
 		.. code-block:: tea
 
-			var x: int = 5;
-			var y: float;
+			var x: int = 5;      // Explicit type declaration
+			var y: float;        // Declared but not initialized
+			var z = 10;          // Type deduced as 'int'
 
 	* Control Flow
 		Tea includes control flow statements such as if, elseif, and else for conditional execution:
@@ -140,30 +156,58 @@ Tea supports several types of statements that define the behavior of a program:
 
 		.. code-block:: tea
 
-			for (var i: int = 0; i < 10; i += 1) do
+			for (var i = 0; i < 10; i += 1) do
 				io::printf("%d\n", i);
 			end
+
+		You can break out of a loop or skip the current cycle using ``break`` or ``continue``
 
 	* Expressions
 		Expressions in Tea are evaluated based on operator precedence. Operators are used to manipulate values.
 
-		Arithmetic: +, -, \*, /
+		Arithmetic: ``+``, ``-``, ``*``, ``/``
 
-		Comparison: ==, !=, <, <=, >, >=
+		Comparison: ``==``, ``!=``, ``<``, ``<=``, ``>``, ``>=``
 
-		Logical: && (and), || (or)
+		Logical: ``&&`` (and), ``||`` (or)
 
-		Unary Operators: ! (not)
+		Unary Operators: ``!`` (not)
 
 		Example of an expression:
 
 		.. code-block:: tea
 
-			var result: int = (x + y) * z;
+			var result = (x + y) * z;
 
 	* Module Imports
-		Tea supports the use of modules, which can import code from other files. Modules are included using the using keyword.
+		Tea supports the use of modules, which can import code from other files. Modules are included using the 'using' keyword.
 
 		.. code-block:: tea
 
 			using "math";
+
+	* Casting
+		Casting in Tea is similiar to C:
+
+		.. code-block:: tea
+
+			var f: double = 42.42;
+			var pf: double* = &f;
+			var pi: int* = (int*)pf;
+
+			io::printf("double: %f\n", f);
+			io::printf("int: %d\n", *pi);
+
+	* Macros
+		Macros in Tea are simple compile-time constants, declared using the `macro` keyword.
+		They are replaced by their value during compilation, making them useful for defining constants, configuration flags, or other values that do not change at runtime.
+
+		.. code-block:: tea
+
+			macro abc 5;
+
+		Once defined, macros can be used like regular identifiers:
+
+		.. code-block:: tea
+			
+			io::printf("abc = %d\n", abc);  // Outputs: abc = 5
