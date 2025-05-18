@@ -87,7 +87,7 @@ Example:
 
 .. _tea-types:
 
-Types
+Data Types
 -----
 Tea supports the following types:
 
@@ -112,6 +112,11 @@ Or use type deduction:
 .. code-block:: tea
 
 	var values = [1, 2, 3, 4, 5];
+
+.. note::
+
+	Floating-point literals with a decimal part are of type ``double`` by default.
+	To explicitly specify a ``float``, append an ``f`` or ``F`` suffix (e.g., ``3.14f``).
 
 Statements
 ----------

@@ -310,7 +310,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-syntax">Function Syntax</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-variants">Function Variants</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arguments">Arguments</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types">Types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-types">Data Types</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statements">Statements</a></li>
 </ul>
             </nav>
@@ -403,8 +403,8 @@ Function definitons in Tea follow a format similar to Lua but with static typing
 </pre></div>
 </div>
 </section>
-<section id="types">
-<span id="tea-types"></span><h2>Types<a class="headerlink" href="#types" title="Link to this heading">#</a></h2>
+<section id="data-types">
+<span id="tea-types"></span><h2>Data Types<a class="headerlink" href="#data-types" title="Link to this heading">#</a></h2>
 <p>Tea supports the following types:</p>
 <p>Primitive Types: - int, float, double, char, string, bool, void, long</p>
 <p>Pointer Types:
@@ -420,6 +420,11 @@ Use <code class="docutils literal notranslate"><span class="pre">[size]</span></
 <p>Or use type deduction:</p>
 <div class="highlight-tea notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">];</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Floating-point literals with a decimal part are of type <code class="docutils literal notranslate"><span class="pre">double</span></code> by default.
+To explicitly specify a <code class="docutils literal notranslate"><span class="pre">float</span></code>, append an <code class="docutils literal notranslate"><span class="pre">f</span></code> or <code class="docutils literal notranslate"><span class="pre">F</span></code> suffix (e.g., <code class="docutils literal notranslate"><span class="pre">3.14f</span></code>).</p>
 </div>
 </section>
 <section id="statements">
@@ -575,7 +580,7 @@ They are replaced by their value during compilation, making them useful for defi
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-syntax">Function Syntax</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-variants">Function Variants</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arguments">Arguments</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types">Types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-types">Data Types</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statements">Statements</a></li>
 </ul>
   </nav></div>
