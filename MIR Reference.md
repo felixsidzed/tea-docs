@@ -67,6 +67,19 @@ Adds two numeric values.
 %result = add %lhs, %rhs
 ```
 
+<details>
+	<summary>Maps to</summary>
+
+	LLVM: ```llvm
+	%result = add %lhs, %rhs
+	```
+	or
+	```
+	%result = fadd %lhs, %rhs
+	```
+	if lhs type is floating-point
+</details>
+
 #### `sub`
 Subtracts the second operand from the first.
 ```
