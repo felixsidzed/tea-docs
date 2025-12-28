@@ -2,7 +2,7 @@
 
 ## except
 
-#### throw
+### throw
 
 ```tea
 @noreturn, @nonamespace
@@ -14,7 +14,7 @@ import func throw(string message) -> void;
 
 **Attributes:**
 - `@noreturn` - This function never returns to the caller
-- `@nonamespace` - This function is not in global scope
+- `@nonamespace` - This function is in global scope
 
 **Example:**
 
@@ -32,7 +32,7 @@ public func main() -> int
 end
 ```
 
-#### pcall
+### pcall
 
 ```tea
 import func pcall(void* f) -> string;
@@ -66,7 +66,7 @@ public func main() -> int
 end
 ```
 
-#### xpcall
+### xpcall
 
 ```tea
 import func xpcall(void* f, void* handler) -> bool;
@@ -106,11 +106,37 @@ public func main() -> int
 end
 ```
 
+### assert
+
+```tea
+@nonamespace
+import func assert(bool pred, string msg) -> void;
+```
+
+**Parameters:**
+- `msg` - Error message
+
+**Attributes:**
+- `@nonamespace` - This function is in global scope
+
+**Example:**
+
+```tea
+using "except";
+
+public func main() -> int
+	var a = 5;
+	assert(a + 1 == 6, "a + 1 should equal to 6");
+	
+	return 0;
+end
+```
+
 ---
 
 ## io
 
-#### print
+### print
 
 ```tea
 import func print(string message) -> void;
@@ -132,7 +158,7 @@ public func main() -> int
 end
 ```
 
-#### printf
+### printf
 
 ```tea
 import func printf(string fmt, ...) -> void;
@@ -157,7 +183,7 @@ public func main() -> int
 end
 ```
 
-#### readf
+### readf
 
 ```tea
 import func readf(string path) -> string;
@@ -188,7 +214,7 @@ public func main() -> int
 end
 ```
 
-#### writef
+### writef
 
 ```tea
 import func writef(string path, string data, int size) -> void;
@@ -215,7 +241,7 @@ public func main() -> int
 end
 ```
 
-#### readline
+### readline
 
 ```tea
 import func readline() -> string;
@@ -245,11 +271,104 @@ public func main() -> int
 end
 ```
 
+### appendf
+
+```tea
+import func appendf(string path, string data, int size) -> void;
+```
+
+Appends data to a file.
+
+**Parameters:**
+- `path` - File path
+- `data` - Data to append
+- `size` - Number of bytes to append
+
+**Example:**
+
+```tea
+using "io";
+using "string";
+
+public func main() -> int
+	var message: string = "Hello, File!";
+	io::appendf("output.txt", message, string::len(message));
+	
+	return 0;
+end
+```
+
+### existsf
+
+```tea
+import func existsf(string path) -> bool;
+```
+
+Checks if a file exists.
+
+**Parameters:**
+- `path` - File path
+
+### delf
+
+```tea
+import func delf(string path) -> bool;
+```
+
+Deletes a file.
+
+**Parameters:**
+- `path` - File path
+
+### mkdir
+
+```tea
+import func mkdir(string path) -> bool;
+```
+
+Deletes a file.
+
+**Parameters:**
+- `path` - File path
+
+### rmdir
+
+```tea
+import func rmdir(string path) -> bool;
+```
+
+Deletes an **empty** directory.
+
+**Parameters:**
+- `path` - Directory path
+
+### tempdir
+
+```tea
+import func tempdir() -> string;
+```
+
+Creates a temporary directory.
+
+**Returns:**
+- Directory path
+
+### tempfile
+
+```tea
+import func tempfile() -> string;
+```
+
+Creates a temporary file.
+
+**Returns:**
+- File path
+
 ---
 
 ## math
 
-#### abs
+### abs
 
 ```tea
 import func abs(int num) -> int;
@@ -263,21 +382,7 @@ Returns the absolute value of an integer.
 **Returns:**
 - Absolute value of `num`
 
-**Example:**
-
-```tea
-using "io";
-using "math";
-
-public func main() -> int
-	var result = math::abs(-42);
-	io::printf("Absolute value: %d\n", result);
-	
-	return 0;
-end
-```
-
-#### sqrt
+### sqrt
 
 ```tea
 import func sqrt(int num) -> int;
@@ -298,14 +403,14 @@ using "io";
 using "math";
 
 public func main() -> int
-	var result = math::sqrt(16);
+	var result = math::sqrt(81);
 	io::printf("Square root: %d\n", result);
 	
 	return 0;
 end
 ```
 
-#### sum
+### sum
 
 ```tea
 import func sum(int nargs, ...) -> int;
@@ -334,11 +439,191 @@ public func main() -> int
 end
 ```
 
+### max
+
+```tea
+import func max(int a, int b) -> int;
+```
+
+Returns the larger of two integers.
+
+**Parameters:**
+
+- `a` - First integer
+- `b` - Second integer
+
+**Returns:**
+
+- The greater of `a` and `b`
+
+---
+
+### min
+
+```tea
+import func min(int a, int b) -> int;
+```
+
+Returns the smaller of two integers.
+
+**Parameters:**
+
+- `a` - First integer
+- `b` - Second integer
+
+**Returns:**
+
+- The lesser of `a` and `b`
+
+---
+
+### clamp
+
+```tea
+import func clamp(int val, int min, int max) -> int;
+```
+
+Clamps a value to a given range.
+
+**Parameters:**
+
+- `val` - Value to clamp
+- `min` - Minimum allowed value
+- `max` - Maximum allowed value
+
+**Returns:**
+
+- `val` constrained to the range `[min, max]`
+
+---
+
+### pow
+
+```tea
+import func pow(int base, int exp) -> int;
+```
+
+Raises an integer to an integer power.
+
+**Parameters:**
+
+- `base` - Base value
+- `exp` - Exponent (non-negative)
+
+**Returns:**
+
+- `base` raised to the power of `exp`
+
+---
+
+### srand
+
+```tea
+import func srand(unsigned int seed) -> void;
+```
+
+Seeds the random number generator.
+
+**Parameters:**
+
+- `seed` - Seed value
+
+---
+
+### random
+
+```tea
+import func random(int min, int max) -> int;
+```
+
+Generates a pseudo-random integer within a range.
+
+**Parameters:**
+
+- `min` - Minimum value (inclusive)
+- `max` - Maximum value (inclusive)
+
+**Returns:**
+
+- Random integer in the range `[min, max]`
+
+---
+
+### ceil
+
+```tea
+import func ceil(double x) -> double;
+```
+
+Rounds a floating-point value up to the nearest integer.
+
+**Parameters:**
+
+- `x` - Double-precision value
+
+**Returns:**
+
+- Smallest integer value greater than or equal to `x`
+
+---
+
+### ceilf
+
+```tea
+import func ceilf(float x) -> float;
+```
+
+Rounds a floating-point value up to the nearest integer.
+
+**Parameters:**
+
+- `x` - Single-precision value
+
+**Returns:**
+
+- Smallest integer value greater than or equal to `x`
+
+---
+
+### floor
+
+```tea
+import func floor(double x) -> double;
+```
+
+Rounds a floating-point value down to the nearest integer.
+
+**Parameters:**
+
+- `x` - Double-precision value
+
+**Returns:**
+
+- Largest integer value less than or equal to `x`
+
+---
+
+### floorf
+
+```tea
+import func floorf(float x) -> float;
+```
+
+Rounds a floating-point value down to the nearest integer.
+
+**Parameters:**
+
+- `x` - Single-precision value
+
+**Returns:**
+
+- Largest integer value less than or equal to `x`
+
 ---
 
 ## memory
 
-#### free
+### free
 
 ```tea
 import func free(void* buf) -> void;
@@ -363,7 +648,7 @@ public func main() -> int
 end
 ```
 
-#### alloc
+### alloc
 
 ```tea
 import func alloc(long size) -> void*;
@@ -391,14 +676,14 @@ public func main() -> int
 		return 1;
 	end
 	
-	// ...buffer
+	// ...use buffer
 	memory::free(buffer);
 	
 	return 0;
 end
 ```
 
-#### copy
+### copy
 
 ```tea
 import func copy(void* dest, const void* src, unsigned int n) -> void*;
@@ -431,11 +716,111 @@ public func main() -> int
 end
 ```
 
+### realloc
+
+```tea
+import func realloc(void* ptr, long nsize) -> void*;
+```
+
+Reallocates a block of memory to a new size.
+
+**Parameters:**
+- `ptr` - Pointer to previously allocated memory (or null)
+- `nsize` - New size in bytes
+
+**Returns:**
+- Pointer to reallocated memory
+
+**Example:**
+
+```tea
+using "memory";
+using "io";
+
+public func main() -> int
+	var buffer: int* = memory::alloc(10 * 4);
+	
+	// ...use buffer
+
+	// resize to hold 20 integers
+	buffer = memory::realloc(buffer, 20 * 4);
+
+	// ...use buffer
+	
+	memory::free(buffer);
+	return 0;
+end
+```
+
+### set
+
+```tea
+import func set(void* dest, unsigned char src, unsigned int n) -> void*;
+```
+
+Sets `n` bytes of memory to a specified value.
+
+**Parameters:**
+- `dest` - Destination pointer
+- `src` - Byte value to set
+- `n` - Number of bytes to set
+
+**Returns:**
+- Pointer to destination
+
+**Example:**
+
+```tea
+using "memory";
+using "io";
+
+public func main() -> int
+	var buffer: char[10];
+	memory::set(buffer, 0, 10);  // Zero out buffer
+	
+	return 0;
+end
+```
+
+### cmp
+
+```tea
+import func cmp(const void* p1, const void* p2, unsigned int n) -> int;
+```
+
+Compares two memory regions byte by byte.
+
+**Parameters:**
+- `p1` - First memory pointer
+- `p2` - Second memory pointer
+- `n` - Number of bytes to compare
+
+**Returns:**
+- 0 if regions are equal, non-zero otherwise
+
+**Example:**
+
+```tea
+using "memory";
+using "io";
+
+public func main() -> int
+	var a: int = 42;
+	var b: int = 42;
+	
+	if (memory::cmp(&a, &b, 4) == 0) do
+		io::print("values are equal\n");
+	end
+	
+	return 0;
+end
+```
+
 ---
 
 ## string
 
-#### len
+### len
 
 ```tea
 import func len(string str) -> int;
@@ -464,7 +849,7 @@ public func main() -> int
 end
 ```
 
-#### eq
+### eq
 
 ```tea
 import func eq(string s1, string s2) -> bool;
@@ -497,7 +882,7 @@ public func main() -> int
 end
 ```
 
-#### itoa
+### itoa
 
 ```tea
 import func itoa(int num, string buffer) -> string;
@@ -519,7 +904,7 @@ using "io";
 using "string";
 
 public func main() -> int
-	var buffer: string;
+	var buffer: char[32];
 	var result = string::itoa(42, buffer);
 	
 	io::printf("String: %s\n", result);
@@ -527,7 +912,7 @@ public func main() -> int
 end
 ```
 
-#### cat
+### cat
 
 ```tea
 import func cat(int nargs, ...) -> string;
@@ -560,7 +945,7 @@ public func main() -> int
 end
 ```
 
-#### sub
+### sub
 
 ```tea
 import func sub(string str, int i, int j) -> string;
@@ -600,7 +985,7 @@ end
 
 ## sys
 
-#### exit
+### exit
 
 ```tea
 @noreturn
@@ -627,7 +1012,7 @@ public func main() -> int
 end
 ```
 
-#### time
+### time
 
 ```tea
 import func time() -> long;
@@ -652,7 +1037,7 @@ public func main() -> int
 end
 ```
 
-#### sleep
+### sleep
 
 ```tea
 import func sleep(int milliseconds) -> void;
@@ -682,7 +1067,7 @@ end
 
 ## thread
 
-#### spawn
+### spawn
 
 ```tea
 import func spawn(void* f) -> void*;
@@ -715,7 +1100,7 @@ public func main() -> int
 end
 ```
 
-#### join
+### join
 
 ```tea
 import func join(void* thread) -> void;
@@ -746,7 +1131,7 @@ public func main() -> int
 end
 ```
 
-#### close
+### close
 
 ```tea
 import func close(void* thread) -> void;
@@ -757,7 +1142,7 @@ Closes a thread handle.
 **Parameters:**
 - `thread` - Thread handle to close
 
-**Note:** This does not terminate the thread or release it's resources.
+**Note:** This does **not** terminate the thread or release it's resources.
 
 **Example:**
 
@@ -773,7 +1158,7 @@ public func main() -> int
 end
 ```
 
-#### exit
+### exit
 
 ```tea
 @noreturn
@@ -804,6 +1189,405 @@ public func main() -> int
 	thread::join(t);
 	thread::close(t);
 	
+	return 0;
+end
+```
+
+---
+
+## mutex
+
+### new
+
+```tea
+import func new() -> void*;
+```
+
+Creates a new mutex.
+
+**Returns:**
+- Mutex handle
+
+**Example:**
+
+```tea
+using "io";
+using "mutex";
+
+public func main() -> int
+	var mtx = mutex::new();
+	
+	mutex::lock(mtx);
+	io::print("critical section\n");
+	mutex::unlock(mtx);
+	
+	return 0;
+end
+```
+
+### lock
+
+```tea
+import func lock(void* mtx) -> void;
+```
+
+Locks a mutex, blocking until the lock is acquired.
+
+**Parameters:**
+- `mtx` - Mutex handle
+
+**Example:**
+
+```tea
+using "io";
+using "mutex";
+
+private var mtx: void*;
+
+func worker() -> void
+	mutex::lock(mtx);
+	io::print("thread has lock\n");
+	mutex::unlock(mtx);
+end
+
+public func main() -> int
+	mtx = mutex::new();
+	// ...use mutex
+
+	return 0;
+end
+```
+
+### unlock
+
+```tea
+import func unlock(void* mtx) -> void;
+```
+
+Unlocks a mutex.
+
+**Parameters:**
+- `mtx` - Mutex handle
+
+### cvnew
+
+```tea
+import func cvnew() -> void*;
+```
+
+Creates a new condition variable.
+
+**Returns:**
+- Condition variable handle
+
+**Example:**
+
+```tea
+using "mutex";
+
+public func main() -> int
+	var cv = mutex::cvnew();
+	var mtx = mutex::new();
+	
+	// ...use condition variable
+
+	return 0;
+end
+```
+
+### wait
+
+```tea
+import func wait(void* cv, void* mtx) -> void;
+```
+
+Waits on a condition variable, atomically releasing the mutex and blocking until signaled.
+
+**Parameters:**
+- `cv` - Condition variable handle
+- `mtx` - Associated mutex handle
+
+**Example:**
+
+```tea
+using "mutex";
+using "io";
+
+var cv: void*;
+var mtx: void*;
+
+func waiter() -> void
+	mutex::lock(mtx);
+
+	io::print("waiting for signal...\n");
+	mutex::wait(cv, mtx);
+	io::print("signal received!\n");
+
+	mutex::unlock(mtx);
+end
+
+public func main() -> int
+	cv = mutex::cvnew();
+	mtx = mutex::new();
+
+	// ...spawn waiter thread
+	return 0;
+end
+```
+
+### signal
+
+```tea
+import func signal(void* cv) -> void;
+```
+
+Signals one thread waiting on a condition variable.
+
+**Parameters:**
+- `cv` - Condition variable handle
+
+**Example:**
+
+```tea
+using "mutex";
+
+public func main() -> int
+	var cv = mutex::cvnew();
+	mutex::signal(cv);
+	
+	return 0;
+end
+```
+
+### broadcast
+
+```tea
+import func broadcast(void* cv) -> void;
+```
+
+Signals all threads waiting on a condition variable.
+
+**Parameters:**
+- `cv` - Condition variable handle
+
+**Example:**
+
+```tea
+using "mutex";
+
+public func main() -> int
+	var cv = mutex::cvnew();
+	
+	mutex::broadcast(cv);
+	
+	return 0;
+end
+```
+
+---
+
+## socket
+
+### connect
+
+```tea
+import func connect(const char* host, unsigned short port) -> void*;
+```
+
+Connects to a remote host.
+
+**Parameters:**
+- `host` - Hostname or IP address
+- `port` - Port number
+
+**Returns:**
+- Socket handle, or null on failure
+
+**Example:**
+
+```tea
+using "io";
+using "socket";
+
+public func main() -> int
+	var sock = socket::connect("example.com", 80);
+
+	if (!sock) do
+		io::print("connection failed\n");
+		return 1;
+	end
+	
+	// ...use socket
+	socket::close(sock);
+	
+	return 0;
+end
+```
+
+### accept
+
+```tea
+import func accept(void* sock) -> void*;
+```
+
+Accepts an incoming connection on a listening socket.
+
+**Parameters:**
+- `sock` - Listening socket handle
+
+**Returns:**
+- New socket handle for the accepted connection
+
+**Example:**
+
+```tea
+using "io";
+using "socket";
+
+public func main() -> int
+	var server = socket::listen(8080);
+	io::print("waiting for connection...\n");
+	
+	var client = socket::accept(server);
+	io::print("client connected!\n");
+	
+	socket::close(client);
+	socket::close(server);
+	
+	return 0;
+end
+```
+
+### listen
+
+```tea
+import func listen(unsigned short port) -> void*;
+```
+
+Creates a listening socket on the specified port.
+
+**Parameters:**
+- `port` - Port number to listen on
+
+**Returns:**
+- Listening socket handle, or null on failure
+
+**Example:**
+
+```tea
+using "socket";
+using "io";
+
+public func main() -> int
+	var server = socket::listen(8080);
+	
+	if (!server) do
+		io::print("failed to create server\n");
+		return 1;
+	end
+	
+	io::print("server listening on port 8080\n");
+	
+	// ...accept connections
+	socket::close(server);
+	
+	return 0;
+end
+```
+
+### recv
+
+```tea
+import func recv(void* sock, string buf, int size) -> int;
+```
+
+Receives data from a socket.
+
+**Parameters:**
+- `sock` - Socket handle
+- `buf` - Buffer to store received data
+- `size` - Maximum number of bytes to receive
+
+**Returns:**
+- Number of bytes received, or -1 on error
+
+**Example:**
+
+```tea
+using "socket";
+using "io";
+
+public func main() -> int
+	var sock = socket::connect("example.com", 80);
+	var buffer: char[256];
+	
+	var bytesRead = socket::recv(sock, buffer, 256);
+	buffer[bytesRead] = '\0';
+
+	io::printf("received %d bytes: %s\n", bytesRead, buffer);
+	
+	socket::close(sock);
+	return 0;
+end
+```
+
+### send
+
+```tea
+import func send(void* sock, string data, int size) -> int;
+```
+
+Sends data through a socket.
+
+**Parameters:**
+- `sock` - Socket handle
+- `data` - Data to send
+- `size` - Number of bytes to send
+
+**Returns:**
+- Number of bytes sent, or -1 on error
+
+**Example:**
+
+```tea
+using "io";
+using "socket";
+using "string";
+
+public func main() -> int
+	var sock = socket::connect("example.com", 80);
+	var message: string = "GET / HTTP/1.1\r\n\r\n";
+	
+	var bytesSent = socket::send(sock, message, string::len(message));
+	io::printf("sent %d bytes\n", bytesSent);
+	
+	socket::close(sock);
+	return 0;
+end
+```
+
+### close
+
+```tea
+import func close(void* sock) -> void;
+```
+
+Closes a socket connection.
+
+**Parameters:**
+- `sock` - Socket handle to close
+
+**Example:**
+
+```tea
+using "socket";
+
+public func main() -> int
+	var sock = socket::connect("example.com", 80);
+	
+	// ...use socket
+	
+	socket::close(sock);
 	return 0;
 end
 ```
